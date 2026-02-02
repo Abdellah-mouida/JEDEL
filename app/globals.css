@@ -1,6 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@tailwind utilities;
+
+@theme {
+  --color-black: #111;
+  --color-black-half-op: #000;
+  --color-white-half-op: #fefefe55;
+  --color-white: #fefefe;
+  --color-primary: #fe7c2a;
+}
+
+@layer base {
+  body {
+    @apply dark:bg-black bg-white relative text-white overflow-hidden;
+  }
+  nav {
+    @apply px-4 flex items-center justify-between h-17;
+  }
+}
+
+@layer components {
+  .logo {
+    @apply h-[50px] w-auto;
+  }
+  .navigation {
+    @apply flex items-center w-full justify-end gap-5 md:mr-8 md:gap-10;
+  }
+  .nav-menu {
+    @apply flex-col pt-16 items-center rotate-25 gap-5 h-screen absolute top-full left-[150%] w-full dark:bg-black-half-op bg-white-half-op;
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-link {
+    @apply hover:text-primary;
+    transition: all 0.7s ease-in-out;
+    position: relative;
+  }
+  .nav-link::before {
+    content: "";
+    transition: all 0.7s ease-in-out;
+    @apply absolute top-8 left-0 w-0 h-1 bg-primary rounded-full;
+  }
+  .nav-link:hover::before {
+    @apply w-full;
+  }
+  .show-menu {
+    @apply top-0 left-0 rotate-0;
+  }
+}
+@layer utilities {
+  .trans {
+    transition: all 0.7s ease-in-out;
+  }
 }
