@@ -7,6 +7,7 @@ import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 // import Menu from "@/components/Menu";
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import keyboard from "@/public/keyboard clone.png";
 
 const HomePage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -23,7 +24,7 @@ const HomePage = () => {
             Home
           </Link>
           <Link className="nav-link" href={"#"}>
-            Feature
+            Features
           </Link>
           <Link className="nav-link" href={"#"}>
             Trusted By{" "}
@@ -47,7 +48,7 @@ const HomePage = () => {
             Home
           </Link>
           <Link className="nav-link" href={"#"}>
-            Feature
+            Features
           </Link>
           <Link className="nav-link" href={"#"}>
             Trusted By{" "}
@@ -57,6 +58,22 @@ const HomePage = () => {
           </Link>
         </menu>
       </nav>
+      <section className="sm:mx-7 sm:my-4 md:p-8 p-4 rounded-2xl bg-hero w-[calc(100vw - 40px)] h-screen overflow-hidden relative">
+        <h1 className="mb-3">Type Faster. Feel Better. Stay in Control.</h1>
+        <p className=" text-lg text-white-half-op text-center mb-5">
+          JEDEL keyboards are designed for comfort, durability, and precision.
+        </p>
+        <main className="flex gap-15">
+          <Image
+            src={keyboard}
+            alt="keyboard"
+            width={800}
+            unoptimized
+            quality={100}
+            className=" absolute -right-[40%] lg:-right-[20%] top-25 "
+          ></Image>
+        </main>
+      </section>
     </div>
   );
 };

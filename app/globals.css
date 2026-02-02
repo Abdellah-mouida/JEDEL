@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @theme {
-  --color-black: #111;
+  --color-black: #171717;
+  --color-hero: #101010;
   --color-black-half-op: #000;
   --color-white-half-op: #fefefe55;
   --color-white: #fefefe;
@@ -17,11 +18,14 @@
   nav {
     @apply px-4 flex items-center justify-between h-17;
   }
+  h1 {
+    @apply md:text-5xl text-3xl font-bold  bg-linear-90 from-primary to-white bg-clip-text text-center text-transparent;
+  }
 }
 
 @layer components {
   .logo {
-    @apply h-[50px] w-auto;
+    @apply h-[40px] w-auto;
   }
   .navigation {
     @apply flex items-center w-full justify-end gap-5 md:mr-8 md:gap-10;
