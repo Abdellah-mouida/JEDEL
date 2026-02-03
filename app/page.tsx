@@ -110,7 +110,7 @@ const HomePage = () => {
               width={800}
               unoptimized
               quality={100}
-              className=" absolute -right-[40%] lg:-right-[20%] top-25 "
+              className=" absolute -right-[40%] lg:-right-[20%] top-25  drop-shadow-primary trans drop-shadow-xl"
             ></Image>
           </main>
         </section>

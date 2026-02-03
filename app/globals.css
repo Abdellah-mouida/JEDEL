@@ -81,7 +81,7 @@
     background-color: var(--color-primary);
   }
   .features h2 {
-    @apply flex gap-2 items-center font-semibold text-primary text-lg sm:text-2xl;
+    @apply flex gap-2 items-center font-semibold text-primary text-lg sm:text-2xl mb-[20px];
   }
   .features p {
     @apply dark:text-white-half-op text-black-half-op text-sm sm:text-lg;
