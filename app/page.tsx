@@ -97,7 +97,7 @@ const HomePage = () => {
           </Link>
         </menu>
       </nav>
-      <section className="sm:mx-7 sm:my-4 md:p-8 p-4 rounded-2xl bg-hero  w-[calc(100vw - 40px)]  relative">
+      <section className="sm:mx-7 sm:my-4 md:p-8 p-4 rounded-2xl bg-hero  w-[calc(100vw - 40px)]  relative overflow-x-hidden">
         <section className="h-[90vh]">
           <h1 className="mb-3">Type Faster. Feel Better. Stay in Control.</h1>
           <p className=" text-lg text-white-half-op text-center mb-5">
