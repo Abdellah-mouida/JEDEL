@@ -41,16 +41,25 @@ const HomePage = () => {
           onClick={() => setShowMenu(true)}
         ></Bars3Icon>
         <div className="navigation hidden sm:flex">
-          <Link className="nav-link" href={"#"}>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
+            href={"/"}
+          >
             Home
           </Link>
-          <Link className="nav-link" href={"#"}>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
+            href={"#features"}
+          >
             Features
           </Link>
-          <Link className="nav-link" href={"#"}>
-            Trusted By{" "}
-          </Link>
-          <Link className="nav-link" href={"#"}>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
+            href={"#contact"}
+          >
             Contact us
           </Link>
         </div>
@@ -65,16 +74,25 @@ const HomePage = () => {
             width={30}
             className="absolute right-8 top-8 cursor-pointer"
           ></XMarkIcon>
-          <Link className="nav-link" href={"#"}>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
+            href={"#home"}
+          >
             Home
           </Link>
-          <Link className="nav-link" href={"#"}>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
+            href={"#features"}
+          >
             Features
           </Link>
-          <Link className="nav-link" href={"#"}>
-            Trusted By{" "}
-          </Link>
-          <Link className="nav-link" href={"#"}>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
+            href={"#contact"}
+          >
             Contact us
           </Link>
         </menu>
@@ -97,7 +115,10 @@ const HomePage = () => {
           </main>
         </section>
         <h1 className="mb-10">Features</h1>
-        <section className="flex flex-col gap-10 sm:gap-20 px-10 features relative sm:w-[80%] sm:m-auto lg:w-[60%]">
+        <section
+          id="features"
+          className="flex flex-col gap-10 sm:gap-20 px-10 features relative sm:w-[80%] sm:m-auto lg:w-[60%]"
+        >
           <div>
             <h2>
               {" "}
@@ -165,7 +186,7 @@ const HomePage = () => {
             </p>
           </div>
         </section>
-        <section>
+        <section id="contact">
           <h1 className="my-5">Contact us</h1>
           <form
             onSubmit={handleSubmit}
