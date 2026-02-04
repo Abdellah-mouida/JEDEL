@@ -16,11 +16,56 @@ import {
   WifiIcon,
   SparklesIcon,
 } from "@heroicons/react/24/outline";
+import LogoLoop from "@/components/LogoLoop";
+import { SiInstagram, SiLinkedin, SiSteam, SiGithub } from "react-icons/si";
 const HomePage = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const imageLogos = [
+    {
+      node: (
+        <SiInstagram
+          className="text-white hover:text-primary trans"
+          aria-hidden={false}
+        />
+      ),
+      ariaLabel: "Instagram",
+      href: "https://www.instagram.com",
+    },
+    {
+      node: (
+        <SiLinkedin
+          className="text-white hover:text-primary trans"
+          aria-hidden={false}
+        />
+      ),
+      ariaLabel: "LinkedIn",
+      href: "https://www.linkedin.com",
+    },
+    {
+      node: (
+        <SiSteam
+          className="text-white hover:text-primary trans"
+          aria-hidden={false}
+        />
+      ),
+      ariaLabel: "Steam",
+      href: "https://store.steampowered.com",
+    },
+    {
+      node: (
+        <SiGithub
+          className="text-white hover:text-primary trans"
+          aria-hidden={false}
+        />
+      ),
+      ariaLabel: "GitHub",
+      href: "https://github.com",
+    },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -184,6 +229,23 @@ const HomePage = () => {
               Use companion software to assign macros, layers, and shortcuts for
               ultimate productivity.
             </p>
+          </div>
+        </section>
+        <section>
+          <h1 className="my-5">Trusted By </h1>
+          <div className="h-[200px] overflow-hidden relative mt-5 flex items-center">
+            <LogoLoop
+              logos={imageLogos}
+              speed={50}
+              direction="left"
+              logoHeight={60}
+              gap={60}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="var(--color-hero)"
+              ariaLabel="Technology partners"
+            />
           </div>
         </section>
         <section id="contact">
