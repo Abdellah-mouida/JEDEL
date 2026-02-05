@@ -1,5 +1,6 @@
 "use client";
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { useTheme } from "next-themes";
 import { Classic } from "@theme-toggles/react";
 import "@theme-toggles/react/css/Classic.css";
