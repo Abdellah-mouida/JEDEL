@@ -3,27 +3,37 @@
 
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --color-black: #171717;
   --color-hero: #101010;
-  --color-black-half-op: #000;
+  --color-white-hero: #eeeeee;
+  --color-black-half-op: #00000080;
   --color-white-half-op: #fefefe55;
-  --color-white: #fefefe;
+  --color-white: #fff;
   --color-primary: #fe7c2a;
 }
+
 ::-webkit-scrollbar {
   display: none;
 }
+
+html {
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
+
 @layer base {
   body {
-    @apply dark:bg-black bg-white relative  text-white;
+    @apply dark:bg-black bg-white relative  dark:text-white text-black;
   }
 
   nav {
     @apply px-4 flex items-center justify-between h-17 overflow-hidden;
   }
   h1 {
-    @apply md:text-5xl text-3xl font-bold  bg-linear-90 from-primary to-white bg-clip-text text-center text-transparent;
+    @apply md:text-5xl text-3xl font-bold  bg-linear-90 from-primary dark:to-white to-black bg-clip-text text-center text-transparent;
   }
   h2 {
     @apply relative;
@@ -38,7 +48,7 @@
     @apply flex items-center w-full justify-end gap-5 md:mr-8 md:gap-10;
   }
   .nav-menu {
-    @apply flex-col -scale-50 pt-16 items-center  rotate-25 gap-5 h-screen absolute -top-full left-[150%] w-full dark:bg-black-half-op bg-white-half-op;
+    @apply flex-col -scale-50 pt-16 items-center  rotate-25 gap-5 h-screen absolute -top-full left-[150%] w-full dark:bg-black bg-white;
     z-index: 10;
     display: flex;
     gap: 2rem;
@@ -86,6 +96,9 @@
   }
   .features p {
     @apply dark:text-white-half-op text-black-half-op text-sm sm:text-lg;
+  }
+  .theme-btn {
+    scale: 1.5;
   }
 }
 @layer utilities {

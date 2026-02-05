@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="steam"><title id="steam">Steam placeholder</title>
-  <rect width="512" height="512" rx="40" fill="#171A21" />
-  <circle cx="180" cy="260" r="46" fill="#66C0F4" />
-  <rect x="240" y="220" width="120" height="24" rx="12" fill="#66C0F4" transform="rotate(-22 300 232)" />
-  <text x="50%" y="460" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle">Steam (placeholder)</text>
-</svg>

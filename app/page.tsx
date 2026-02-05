@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import jedel from "@/public/Jedel log .png";
+import lightJedel from "@/public/Jedel log -1.png";
 import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 // import Menu from "@/components/Menu";
@@ -18,17 +19,20 @@ import {
 } from "@heroicons/react/24/outline";
 import LogoLoop from "@/components/LogoLoop";
 import { SiInstagram, SiLinkedin, SiSteam, SiGithub } from "react-icons/si";
+import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "next-themes";
+
 const HomePage = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
+  const { resolvedTheme } = useTheme();
   const imageLogos = [
     {
       node: (
         <SiInstagram
-          className="text-white hover:text-primary trans"
+          className="dark:text-white text-black hover:text-primary trans "
           aria-hidden={false}
         />
       ),
@@ -38,7 +42,7 @@ const HomePage = () => {
     {
       node: (
         <SiLinkedin
-          className="text-white hover:text-primary trans"
+          className="dark:text-white text-black hover:text-primary trans "
           aria-hidden={false}
         />
       ),
@@ -48,7 +52,7 @@ const HomePage = () => {
     {
       node: (
         <SiSteam
-          className="text-white hover:text-primary trans"
+          className="dark:text-white text-black hover:text-primary trans "
           aria-hidden={false}
         />
       ),
@@ -58,7 +62,7 @@ const HomePage = () => {
     {
       node: (
         <SiGithub
-          className="text-white hover:text-primary trans"
+          className="dark:text-white text-black hover:text-primary trans "
           aria-hidden={false}
         />
       ),
@@ -80,11 +84,12 @@ const HomePage = () => {
   return (
     <div>
       <nav>
-        <Image src={jedel} alt="jedel img" className="logo"></Image>
-        <Bars3Icon
-          className="text-primary w-9 cursor-pointer sm:hidden"
-          onClick={() => setShowMenu(true)}
-        ></Bars3Icon>
+        {resolvedTheme == "dark" ? (
+          <Image src={jedel} alt="jedel img" className="logo"></Image>
+        ) : (
+          <Image src={lightJedel} alt="jedel img" className="logo"></Image>
+        )}
+
         <div className="navigation hidden sm:flex">
           <Link
             onClick={() => setShowMenu(false)}
@@ -103,12 +108,25 @@ const HomePage = () => {
           <Link
             onClick={() => setShowMenu(false)}
             className="nav-link"
+            href={"#trust"}
+          >
+            Trusted By
+          </Link>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
             href={"#contact"}
           >
             Contact us
           </Link>
         </div>
-
+        <div className="lg:px-10 px-2 h-full flex items-center gap-5">
+          <ThemeToggle></ThemeToggle>
+          <Bars3Icon
+            className="text-primary w-9 cursor-pointer sm:hidden"
+            onClick={() => setShowMenu(true)}
+          ></Bars3Icon>
+        </div>
         <menu
           className={
             "sm:hidden nav-menu trans " + (showMenu ? "show-menu" : "")
@@ -119,6 +137,11 @@ const HomePage = () => {
             width={30}
             className="absolute right-8 top-8 cursor-pointer"
           ></XMarkIcon>
+          {resolvedTheme == "dark" ? (
+            <Image src={jedel} alt="jedel img" className="logo"></Image>
+          ) : (
+            <Image src={lightJedel} alt="jedel img" className="logo"></Image>
+          )}
           <Link
             onClick={() => setShowMenu(false)}
             className="nav-link"
@@ -136,16 +159,23 @@ const HomePage = () => {
           <Link
             onClick={() => setShowMenu(false)}
             className="nav-link"
+            href={"#trust"}
+          >
+            Trusted By
+          </Link>
+          <Link
+            onClick={() => setShowMenu(false)}
+            className="nav-link"
             href={"#contact"}
           >
             Contact us
           </Link>
         </menu>
       </nav>
-      <section className="sm:mx-7 sm:my-4 md:p-8 p-4 rounded-2xl bg-hero  w-[calc(100vw - 40px)]  relative overflow-x-hidden">
+      <section className="sm:mx-7 sm:my-4 md:p-8 p-4 rounded-2xl dark:bg-hero bg-white-hero  w-[calc(100vw - 40px)]  relative overflow-x-hidden">
         <section className="h-[90vh]">
           <h1 className="mb-3">Type Faster. Feel Better. Stay in Control.</h1>
-          <p className=" text-lg text-white-half-op text-center mb-5">
+          <p className=" text-lg dark:text-white-half-op text-black-half-op text-center mb-5">
             JEDEL keyboards are designed for comfort, durability, and precision.
           </p>
           <main className="flex gap-15">
@@ -231,7 +261,7 @@ const HomePage = () => {
             </p>
           </div>
         </section>
-        <section>
+        <section id="trust">
           <h1 className="my-5">Trusted By </h1>
           <div className="h-[200px] overflow-hidden relative mt-5 flex items-center">
             <LogoLoop
@@ -243,7 +273,11 @@ const HomePage = () => {
               hoverSpeed={0}
               scaleOnHover
               fadeOut
-              fadeOutColor="var(--color-hero)"
+              fadeOutColor={
+                resolvedTheme === "dark"
+                  ? "var(--color-hero)"
+                  : "var(--color-white-hero)"
+              }
               ariaLabel="Technology partners"
             />
           </div>
@@ -264,7 +298,7 @@ const HomePage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="p-3 rounded-md trans bg-white/5 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="p-3 rounded-md trans dark:bg-white/5 bg-black/5 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
 
@@ -279,7 +313,7 @@ const HomePage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="p-3 rounded-md  trans bg-white/5 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="p-3 rounded-md  trans dark:bg-white/5 bg-black/5 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
 
@@ -294,7 +328,7 @@ const HomePage = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="p-3 rounded-md bg-white/5 focus:outline-none trans focus:ring-2 focus:ring-primary resize-none"
+                className="p-3 rounded-md dark:bg-white/5 bg-black/5 focus:outline-none trans focus:ring-2 focus:ring-primary resize-none"
               />
             </div>
 
