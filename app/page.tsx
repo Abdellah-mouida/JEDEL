@@ -197,7 +197,7 @@ const HomePage = () => {
           <div>
             <h2>
               {" "}
-              <HandRaisedIcon className="w-[20px] inline text-primary sm:w-[30px] "></HandRaisedIcon>
+              <HandRaisedIcon className="w-5 inline text-primary sm:w-7.5 "></HandRaisedIcon>
               Ergonomic Design
             </h2>
 
@@ -208,7 +208,7 @@ const HomePage = () => {
           </div>
           <div>
             <h2>
-              <ShieldCheckIcon className="w-[20px] inline text-primary sm:w-[30px] "></ShieldCheckIcon>
+              <ShieldCheckIcon className="w-5 inline text-primary sm:w-7.5 "></ShieldCheckIcon>
               Durable & Reliable
             </h2>
             <p>
@@ -219,7 +219,7 @@ const HomePage = () => {
           <div>
             <h2>
               {" "}
-              <DeviceTabletIcon className="w-[20px] inline text-primary sm:w-[30px] "></DeviceTabletIcon>
+              <DeviceTabletIcon className="w-5 inline text-primary sm:w-7.5 "></DeviceTabletIcon>
               Universal Compatibility
             </h2>
             <p>
@@ -230,7 +230,7 @@ const HomePage = () => {
 
           <div>
             <h2>
-              <SparklesIcon className="w-[20px] inline text-primary sm:w-[30px] "></SparklesIcon>
+              <SparklesIcon className="w-5 inline text-primary sm:w-7.5 "></SparklesIcon>
               Customizable RGB
             </h2>
             <p>
@@ -241,7 +241,7 @@ const HomePage = () => {
 
           <div>
             <h2>
-              <WifiIcon className="w-[20px] inline text-primary sm:w-[30px] "></WifiIcon>
+              <WifiIcon className="w-5 inline text-primary sm:w-7.5 "></WifiIcon>
               Wireless Connectivity
             </h2>
             <p>
@@ -252,7 +252,7 @@ const HomePage = () => {
 
           <div>
             <h2>
-              <Cog6ToothIcon className="w-[20px] inline text-primary sm:w-[30px] "></Cog6ToothIcon>
+              <Cog6ToothIcon className="w-5 inline text-primary sm:w-7.5 "></Cog6ToothIcon>
               Programmable Macros
             </h2>
             <p>
@@ -263,7 +263,7 @@ const HomePage = () => {
         </section>
         <section id="trust">
           <h1 className="my-5">Trusted By </h1>
-          <div className="h-[200px] overflow-hidden relative mt-5 flex items-center">
+          <div className="h-50 overflow-hidden relative mt-5 flex items-center">
             <LogoLoop
               logos={imageLogos}
               speed={50}
