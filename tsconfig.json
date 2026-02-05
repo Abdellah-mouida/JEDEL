@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "allowJs": true, // allow JS/JSX files
+    "checkJs": false, // completely ignore type checking in JS/JSX
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -26,6 +27,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx", // include JSX files so TS ignores them properly
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"

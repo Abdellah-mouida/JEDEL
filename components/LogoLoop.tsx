@@ -1,15 +1,56 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-nocheck
-
-import { useCallback, useEffect, useMemo, useRef, useState, memo } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  memo,
+} from "react";
 import "./LogoLoop.css";
+
+// Define TypeScript interfaces
+interface LogoItem {
+  node?: React.ReactNode;
+  ariaLabel?: string;
+  href?: string;
+  src?: string;
+  srcSet?: string;
+  sizes?: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+  title?: string;
+}
+
+interface LogoLoopProps {
+  logos: LogoItem[];
+  speed?: number;
+  direction?: "left" | "right" | "up" | "down";
+  width?: string | number;
+  logoHeight?: number;
+  gap?: number;
+  pauseOnHover?: boolean;
+  hoverSpeed?: number;
+  fadeOut?: boolean;
+  fadeOutColor?: string;
+  scaleOnHover?: boolean;
+  renderItem?: (item: LogoItem, key: string) => React.ReactNode;
+  ariaLabel?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
 
 const ANIMATION_CONFIG = { SMOOTH_TAU: 0.25, MIN_COPIES: 2, COPY_HEADROOM: 2 };
 
-const toCssLength = (value) =>
+const toCssLength = (value: string | number | undefined): string | undefined =>
   typeof value === "number" ? `${value}px` : (value ?? undefined);
 
-const useResizeObserver = (callback, elements, dependencies) => {
+const useResizeObserver = (
+  callback: () => void,
+  elements: React.RefObject<HTMLElement | null>[],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dependencies: any[],
+) => {
   useEffect(() => {
     if (!window.ResizeObserver) {
       const handleResize = () => callback();
@@ -30,7 +71,12 @@ const useResizeObserver = (callback, elements, dependencies) => {
   }, [callback, elements, dependencies]);
 };
 
-const useImageLoader = (seqRef, onLoad, dependencies) => {
+const useImageLoader = (
+  seqRef: React.RefObject<HTMLElement | null>,
+  onLoad: () => void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dependencies: any[],
+) => {
   useEffect(() => {
     const images = seqRef.current?.querySelectorAll("img") ?? [];
     if (images.length === 0) {
@@ -61,16 +107,16 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
 };
 
 const useAnimationLoop = (
-  trackRef,
-  targetVelocity,
-  seqWidth,
-  seqHeight,
-  isHovered,
-  hoverSpeed,
-  isVertical,
+  trackRef: React.RefObject<HTMLElement | null>,
+  targetVelocity: number,
+  seqWidth: number,
+  seqHeight: number,
+  isHovered: boolean,
+  hoverSpeed: number | undefined,
+  isVertical: boolean,
 ) => {
-  const rafRef = useRef(null);
-  const lastTimestampRef = useRef(null);
+  const rafRef = useRef<number | null>(null);
+  const lastTimestampRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
   const velocityRef = useRef(0);
 
@@ -88,7 +134,7 @@ const useAnimationLoop = (
       track.style.transform = transformValue;
     }
 
-    const animate = (timestamp) => {
+    const animate = (timestamp: number) => {
       if (lastTimestampRef.current === null) {
         lastTimestampRef.current = timestamp;
       }
@@ -138,7 +184,7 @@ const useAnimationLoop = (
   ]);
 };
 
-export const LogoLoop = memo(
+export const LogoLoop = memo<LogoLoopProps>(
   ({
     logos,
     speed = 120,
@@ -156,9 +202,9 @@ export const LogoLoop = memo(
     className,
     style,
   }) => {
-    const containerRef = useRef(null);
-    const trackRef = useRef(null);
-    const seqRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const trackRef = useRef<HTMLDivElement>(null);
+    const seqRef = useRef<HTMLUListElement>(null);
 
     const [seqWidth, setSeqWidth] = useState(0);
     const [seqHeight, setSeqHeight] = useState(0);
@@ -273,7 +319,7 @@ export const LogoLoop = memo(
     }, [effectiveHoverSpeed]);
 
     const renderLogoItem = useCallback(
-      (item, key) => {
+      (item: LogoItem, key: string) => {
         if (renderItem) {
           return (
             <li className="logoloop__item" key={key} role="listitem">
